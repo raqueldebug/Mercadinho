@@ -5,8 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>br.com.mercadinho</groupId>
-    <artifactId>estoque</artifactId>
+    <artifactId>_estoque</artifactId>
     <version>1.0-SNAPSHOT</version>
+
 
     <dependencies>
         <!-- Outras dependências aqui -->

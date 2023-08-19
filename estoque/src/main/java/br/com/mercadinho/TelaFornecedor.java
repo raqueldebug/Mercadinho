@@ -1,10 +1,11 @@
 package br.com.mercadinho;
-
-import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class TelaFornecedor extends JFrame {
 
@@ -13,10 +14,12 @@ public class TelaFornecedor extends JFrame {
     private JTextField cnpjText;
     private JTextField emailText;
 
+
     public TelaFornecedor() {
-        setTitle("Tela Fornecedor");
-        setSize(400, 300);
+        setTitle("Cadastrar Fornecedor");
+        setSize(500, 450);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
 
         JPanel panel = new JPanel(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
@@ -36,19 +39,31 @@ public class TelaFornecedor extends JFrame {
         emailText = new JTextField(20);
 
         JButton cadastrarButton = new JButton("Cadastrar");
-        JButton atualizarButton = new JButton("Atualizar");
+        JButton atualizarButton = new JButton("Pesquisar");
+        JButton limpardados = new JButton("Limpar dados");
 
         cadastrarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                cadastrar();
+                try {
+                    cadastrar();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
 
         atualizarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                atualizar();
+                pesquisar();
+            }
+        });
+
+        atualizarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                limpardados();
             }
         });
 
@@ -71,16 +86,38 @@ public class TelaFornecedor extends JFrame {
         setVisible(true);
     }
 
-    private void cadastrar() {
-        String nome = nomeText.getText();
-        String celular = celularText.getText();
+    private void cadastrar() throws SQLException {
+        String nnomeText = nomeText.getText();
+        String ccelularText = celularText.getText();
+        String ccnpjText = cnpjText.getText();
+        String eemailText = emailText.getText();
+
+        try {
+            String sql = "INSERT INTO FORNECEDOR (NOME, CNPJ, CELULAR, EMAIL) VALUES (?, ?, ?, ?)";
+            PreparedStatement preparedStatement = (PreparedStatement) DatabasesConnection.getConnection(sql);
+            preparedStatement.setString(1, nnomeText);
+            preparedStatement.setString(2, ccelularText);
+            preparedStatement.setString(3, ccnpjText);
+            preparedStatement.setString(4, eemailText);
+
+            preparedStatement.executeUpdate();
+
+            JOptionPane.showMessageDialog(this, "Dados inseridos no banco de dados: ");
+            preparedStatement.close();
+            DatabasesConnection.close();
+        } catch (
+                SQLException e) {
+            e.printStackTrace();
+        }
+
 
         // Lógica para cadastrar os dados no banco de dados ou fazer outra ação necessária.
-        // Exemplo: exibir uma mensagem de sucesso.
-        JOptionPane.showMessageDialog(this, "Cadastro realizado com sucesso: " + nome + ", " + celular);
+
+
     }
 
-    private void atualizar() {
+
+    private void pesquisar() {
         String nome = nomeText.getText();
         String celular = celularText.getText();
 
@@ -89,8 +126,25 @@ public class TelaFornecedor extends JFrame {
         JOptionPane.showMessageDialog(this, "Dados atualizados: " + nome + ", " + celular);
     }
 
+
+
+    private void limpardados() {
+        String nome = nomeText.getText();
+        String celular = celularText.getText();
+
+        // Lógica para atualizar os dados no banco de dados ou fazer outra ação necessária.
+        // Exemplo: exibir uma mensagem de sucesso.
+        JOptionPane.showMessageDialog(this, "Dados atualizados: " + nome + ", " + celular);
+    }
+
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new TelaFornecedor());
     }
 }
+
+
+
+
+
 
