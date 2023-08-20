@@ -36,9 +36,12 @@ public class TelaFornecedor extends JFrame  {
         JButton cadastrarButton = new JButton("Cadastrar");
         JButton atualizarButton = new JButton("Pesquisar");
         JButton limpardados = new JButton("Limpar dados");
+        JButton returnaMenu = new JButton("Retornar ao menu");
+
         buttonPanel.add(cadastrarButton);
         buttonPanel.add(atualizarButton);
         buttonPanel.add(limpardados);
+        buttonPanel.add(returnaMenu);
 
         layout.row().center().add(buttonPanel);
 
@@ -58,6 +61,13 @@ public class TelaFornecedor extends JFrame  {
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
+            }
+        });
+        returnaMenu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+         TelaMenu menu = new TelaMenu();
+                menu.setVisible(true);
             }
         });
 

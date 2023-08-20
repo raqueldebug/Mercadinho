@@ -19,12 +19,15 @@ public class TelaProduto extends JFrame {
     private static Map<JLabel, JTextField> camposTexto = new HashMap<>(); // Mapa para armazenar rótulos e campos de texto
 
     public static void main(String[] args) {
+
         SwingUtilities.invokeLater(() -> createAndShowGUI());
 
 
     }
 
-
+public TelaProduto(){
+    createAndShowGUI();
+}
 
     private static void createAndShowGUI() {
         JFrame frame = new JFrame("Cadastro Produto");
@@ -48,9 +51,12 @@ public class TelaProduto extends JFrame {
         JButton cadastrarButton = new JButton("Cadastrar");
         JButton cancelarButton = new JButton("Cancelar");
         JButton limparButton = new JButton("Limpar dados");
+        JButton retornaMenu = new JButton("Retornar ao menu");
+
         buttonPanel.add(cadastrarButton);
         buttonPanel.add(cancelarButton);
         buttonPanel.add(limparButton);
+        buttonPanel.add(retornaMenu);
 
 
         layout.row().center().add(buttonPanel);
@@ -60,12 +66,34 @@ public class TelaProduto extends JFrame {
         frame.setVisible(true);
 
 
+      /*  TelaMenu menu = new TelaMenu();
+        menu.setVisible(true);
+
+
+        retornaMenu.addActionListener(new ActionListener() {
+            private boolean telaVisivel = true;
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                   if (telaVisivel) {
+                       menu.setVisible(false); // Fecha a tela
+                        telaVisivel = false;
+                    } else {
+                       menu.setVisible(true);  // Reabre a tela
+                        telaVisivel = true;
+                    }
+                }
+
+
+        });
+        frame.getContentPane().add(retornaMenu);*/
 
 
 
         cadastrarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                JOptionPane.showMessageDialog(cadastrarButton, "CADASTRADO!!!");
 
             }
         });
@@ -90,6 +118,10 @@ public class TelaProduto extends JFrame {
 
     }
 
+    public void retornamenu(){
+
+
+    }
     private static void limparDados() {
 
     }

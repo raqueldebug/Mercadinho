@@ -4,8 +4,6 @@ import net.java.dev.designgridlayout.DesignGridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
-import java.util.EventListener;
 public class TelaMenu {
 
     public static void main(String[] args) {
@@ -13,6 +11,9 @@ public class TelaMenu {
 
     }
 
+    public TelaMenu(){
+        createAndShowGUI();
+    }
 
     private static void createAndShowGUI() {
 
@@ -84,6 +85,9 @@ public class TelaMenu {
 
     }
 
+
+    public void setVisible(boolean b) {
+    }
 
 
 }
