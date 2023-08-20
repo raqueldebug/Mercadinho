@@ -68,7 +68,8 @@ public class TelaMenu {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                //criar tela
+             ViewProdutos viewP = new ViewProdutos();
+                viewP.setVisible(true);
 
 
             }
