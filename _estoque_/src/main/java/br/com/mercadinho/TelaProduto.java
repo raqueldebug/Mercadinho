@@ -100,8 +100,8 @@ public class TelaProduto extends JFrame {
         List<String> nomesFornecedores = new ArrayList<>();
 
         try {
-            Connection connection = ConectorBd.getConnection();
-            Statement statement = connection.createStatement();
+            Connection conexao = ConectorBd.getConnection();
+            Statement statement = conexao.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT NOME FROM FORNECEDOR");
 
 
@@ -112,7 +112,7 @@ public class TelaProduto extends JFrame {
 
             resultSet.close();
             statement.close();
-            connection.close();
+            conexao.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

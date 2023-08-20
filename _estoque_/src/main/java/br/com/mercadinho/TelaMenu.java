@@ -61,6 +61,8 @@ public class TelaMenu {
 
             TelaProduto telap = new TelaProduto();
             telap.setVisible(true);
+
+
                 //ARRUMAR
             }
         });
