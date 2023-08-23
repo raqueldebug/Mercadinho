@@ -1,6 +1,9 @@
-package br.com.mercadinho;
-import javax.swing.*;
+package br.com.mercadinho.view;
+
+import br.com.mercadinho.ViewProdutos;
 import net.java.dev.designgridlayout.DesignGridLayout;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -71,8 +74,8 @@ public class TelaMenu {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-             ViewProdutos viewP = new ViewProdutos();
-                viewP.setVisible(true);
+                ViewProdutos viewP = new ViewProdutos();
+                setVisible(true);
 
 
             }
@@ -86,7 +89,7 @@ public class TelaMenu {
     }
 
 
-    public void setVisible(boolean b) {
+    public static void setVisible(boolean b) {
     }
 
 

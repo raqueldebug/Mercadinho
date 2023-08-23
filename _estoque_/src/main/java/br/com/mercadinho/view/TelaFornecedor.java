@@ -1,9 +1,9 @@
-package br.com.mercadinho;
+package br.com.mercadinho.view;
+import br.com.mercadinho.db.ConectorBd;
 import net.java.dev.designgridlayout.DesignGridLayout;
 
 import javax.swing.JOptionPane;
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.PreparedStatement;
@@ -11,23 +11,21 @@ import java.sql.SQLException;
 
 public class TelaFornecedor extends JFrame  {
 
-    private JTextField nomeText;
-    private JTextField celularText;
-    private JTextField cnpjText;
-    private JTextField emailText;
+    private JTextField nomeText  = new JTextField(20);
+    private JTextField celularText  = new JTextField(20);
+    private JTextField cnpjText  = new JTextField(20);
+    private JTextField emailText  = new JTextField(20);
 
 
     public TelaFornecedor() {
         JFrame frame = new JFrame("Cadastro Fornecedor");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-
-
         DesignGridLayout layout = new DesignGridLayout(frame.getContentPane());
-        layout.row().grid(new JLabel("Nome:")).add(new JTextField(20));
-        layout.row().grid(new JLabel("Celular:")).add(new JTextField(20));
-        layout.row().grid(new JLabel("CNPJ:")).add(new JTextField(20));
-        layout.row().grid(new JLabel("E-mail:")).add(new JTextField(20));
+        layout.row().grid(new JLabel("Nome:")).add(nomeText);
+        layout.row().grid(new JLabel("Celular:")).add(celularText);
+        layout.row().grid(new JLabel("CNPJ:")).add(cnpjText);
+        layout.row().grid(new JLabel("E-mail:")).add(emailText);
 
 
 
@@ -88,7 +86,7 @@ public class TelaFornecedor extends JFrame  {
 
 
 
-        setVisible(true);
+        //setVisible(true);
     }
 
     private void cadastrar() throws SQLException {
@@ -142,8 +140,8 @@ public class TelaFornecedor extends JFrame  {
 
 
     private void limpardados() {
-        String nome = nomeText.getText();
-        String celular = celularText.getText();
+       // String nome = nomeText.getText();
+
 
         // Lógica para atualizar os dados no banco de dados ou fazer outra ação necessária.
         // Exemplo: exibir uma mensagem de sucesso.

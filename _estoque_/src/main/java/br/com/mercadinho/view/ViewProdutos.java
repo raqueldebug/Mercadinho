@@ -1,17 +1,14 @@
 package br.com.mercadinho;
 
-import net.java.dev.designgridlayout.DesignGridLayout;
+import br.com.mercadinho.db.ConectorBd;
 
-import javax.swing.JOptionPane;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 public class ViewProdutos extends JFrame {
@@ -109,5 +106,4 @@ public class ViewProdutos extends JFrame {
         });
     }
 }
-
 
