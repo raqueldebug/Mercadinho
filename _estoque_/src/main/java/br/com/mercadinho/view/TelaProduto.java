@@ -142,6 +142,10 @@ public class TelaProduto extends JFrame {
 
     }
 
+    public void testcadastro(){
+
+
+    }
     public class listaprodutos {
 
         private JTextArea textArea;

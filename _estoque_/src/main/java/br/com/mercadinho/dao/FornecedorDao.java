@@ -2,16 +2,12 @@ package br.com.mercadinho.dao;
 
 import br.com.mercadinho.exception.FornecedorException;
 import br.com.mercadinho.model.Fornecedor;
-
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import br.com.mercadinho.db.ConectorBd;
-import br.com.mercadinho.exception.FornecedorException;
-import br.com.mercadinho.model.Fornecedor;
+
 
 public class FornecedorDao {
 
