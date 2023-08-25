@@ -19,8 +19,10 @@ public class Fornecedor {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public String setNome(String Novonome) {
+        this.nome = Novonome;
+
+        return Novonome;
     }
 
     public String getCnpj() {

@@ -1,8 +1,9 @@
 package br.com.mercadinho.view;
 
-import br.com.mercadinho.model.Produto;
 import br.com.mercadinho.ViewProdutos;
+import br.com.mercadinho.control.ProdutoControl;
 import br.com.mercadinho.db.ConectorBd;
+import br.com.mercadinho.model.Produto;
 import net.java.dev.designgridlayout.DesignGridLayout;
 
 import javax.swing.*;
@@ -21,12 +22,12 @@ public class TelaProduto extends JFrame {
 
     Produto produto = new Produto();
 
-    private static JTextField nomeP = new JTextField(20);
-    private static JTextField quantd = new JTextField(20);
-    private static JTextField valor = new JTextField(20);
-    private static JTextField dtaval = new JTextField(20);
-    private static JTextField qtdminest = new JTextField(20);
-    private static JTextField dtainclusao = new JTextField(20);
+    private static JTextField nomeP = new JTextField();
+    private static JTextField quantd = new JTextField();
+    private static JTextField valor = new JTextField();
+    private static JTextField dtaval = new JTextField();
+    private static JTextField qtdminest = new JTextField();
+    private static JTextField dtainclusao = new JTextField();
 
     private static JComboBox<String> fornecedorComboBox;
     private static Map<JLabel, JTextField> camposTexto = new HashMap<>(); // Mapa para armazenar rótulos e campos de texto
@@ -121,6 +122,9 @@ public class TelaProduto extends JFrame {
         cadastrarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                ProdutoControl prodtud = new ProdutoControl();
+
 
                 JOptionPane.showMessageDialog(cadastrarButton, "CADASTRADO!!!");
 

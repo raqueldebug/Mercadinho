@@ -1,23 +1,28 @@
 package br.com.mercadinho.view;
-import br.com.mercadinho.db.ConectorBd;
+
+import br.com.mercadinho.control.FornecedorControl;
+import br.com.mercadinho.exception.FornecedorException;
+import br.com.mercadinho.model.Fornecedor;
 import net.java.dev.designgridlayout.DesignGridLayout;
 
-import javax.swing.JOptionPane;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
-public class TelaFornecedor extends JFrame  {
+public class TelaFornecedor extends JFrame {
 
-    private JTextField nomeText  = new JTextField(20);
-    private JTextField celularText  = new JTextField(20);
-    private JTextField cnpjText  = new JTextField(20);
-    private JTextField emailText  = new JTextField(20);
+
+
+    public JTextField nomeText = new JTextField();
+
+    private JTextField celularText = new JTextField();
+    private JTextField cnpjText = new JTextField();
+    private JTextField emailText = new JTextField();
 
 
     public TelaFornecedor() {
+
+
         JFrame frame = new JFrame("Cadastro Fornecedor");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -28,17 +33,15 @@ public class TelaFornecedor extends JFrame  {
         layout.row().grid(new JLabel("E-mail:")).add(emailText);
 
 
-
-
         JPanel buttonPanel = new JPanel();
         JButton cadastrarButton = new JButton("Cadastrar");
         JButton atualizarButton = new JButton("Pesquisar");
-        JButton limpardados = new JButton("Limpar dados");
+        JButton cancelar = new JButton("Cancelar");
         JButton returnaMenu = new JButton("Retornar ao menu");
 
         buttonPanel.add(cadastrarButton);
         buttonPanel.add(atualizarButton);
-        buttonPanel.add(limpardados);
+        buttonPanel.add(cancelar);
         buttonPanel.add(returnaMenu);
 
         layout.row().center().add(buttonPanel);
@@ -49,22 +52,23 @@ public class TelaFornecedor extends JFrame  {
         frame.setVisible(true);
 
 
-
-
         cadastrarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    cadastrar();
-                } catch (SQLException ex) {
+                System.out.print(nomeText);
+              /*  try {
+                    fc.cadastrar();
+
+                } catch (FornecedorException ex) {
                     throw new RuntimeException(ex);
-                }
+                }*/
+
             }
         });
         returnaMenu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-         TelaMenu menu = new TelaMenu();
+                TelaMenu menu = new TelaMenu();
                 menu.setVisible(true);
             }
         });
@@ -72,11 +76,14 @@ public class TelaFornecedor extends JFrame  {
         atualizarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                pesquisar();
+                FornecedorControl fc = new FornecedorControl();
+                Fornecedor f = new Fornecedor();
+               Fornecedor rs = fc.pesquisar(f.getCnpj());
+
             }
         });
 
-        limpardados.addActionListener(new ActionListener() {
+        cancelar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 limpardados();
@@ -84,39 +91,7 @@ public class TelaFornecedor extends JFrame  {
         });
 
 
-
-
         //setVisible(true);
-    }
-
-    private void cadastrar() throws SQLException {
-        String nnomeText = nomeText.getText();
-        String ccelularText = celularText.getText();
-        String ccnpjText = cnpjText.getText();
-        String eemailText = emailText.getText();
-
-        try {
-            String sql = "INSERT INTO FORNECEDOR (NOME, CNPJ, CELULAR, EMAIL) VALUES (?, ?, ?, ?)";
-            PreparedStatement preparedStatement = (PreparedStatement) ConectorBd.getConnection(sql);
-            preparedStatement.setString(1, nnomeText);
-            preparedStatement.setString(2, ccelularText);
-            preparedStatement.setString(3, ccnpjText);
-            preparedStatement.setString(4, eemailText);
-
-            preparedStatement.executeUpdate();
-
-            JOptionPane.showMessageDialog(this, "Dados inseridos no banco de dados: ");
-            preparedStatement.close();
-            ConectorBd.close();
-        } catch (
-                SQLException e) {
-            e.printStackTrace();
-        }
-
-
-        // Lógica para cadastrar os dados no banco de dados ou fazer outra ação necessária.
-
-
     }
 
 
@@ -130,32 +105,18 @@ public class TelaFornecedor extends JFrame  {
         //POSSO CHAMAR UMA PAGE COM TODOS OS FORNECEDORES CADASTRADOS
 
 
-
-
         // Lógica para atualizar os dados no banco de dados ou fazer outra ação necessária.
         // Exemplo: exibir uma mensagem de sucesso.
-        JOptionPane.showMessageDialog(this, "Dados atualizados: " );
+        JOptionPane.showMessageDialog(this, "Dados atualizados: ");
     }
 
 
-
     private void limpardados() {
-       // String nome = nomeText.getText();
-
-
-        // Lógica para atualizar os dados no banco de dados ou fazer outra ação necessária.
-        // Exemplo: exibir uma mensagem de sucesso.
-
-
         nomeText.setText("");
         celularText.setText("");
         cnpjText.setText("");
         emailText.setText("");
-
-        JOptionPane.showMessageDialog(this, "dados apagado");
     }
-
-
 
 
     public static void main(String[] args) {
