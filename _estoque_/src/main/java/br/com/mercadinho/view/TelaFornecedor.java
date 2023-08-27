@@ -13,14 +13,24 @@ public class TelaFornecedor extends JFrame {
 
 
 
-    public JTextField nomeText = new JTextField();
+    Fornecedor fornecedor = new Fornecedor();
 
+
+
+    public JTextField nomeText = new JTextField();
     private JTextField celularText = new JTextField();
     private JTextField cnpjText = new JTextField();
     private JTextField emailText = new JTextField();
 
+    public void preencherCamposComNome(Fornecedor fornecedor) {
+        nomeText.setText(fornecedor.getNome());
+        celularText.setText(fornecedor.getCelular());
+        cnpjText.setText(fornecedor.getCnpj());
+        emailText.setText(fornecedor.getEmail());
+    }
 
     public TelaFornecedor() {
+
 
 
         JFrame frame = new JFrame("Cadastro Fornecedor");
@@ -57,28 +67,31 @@ public class TelaFornecedor extends JFrame {
         frame.setVisible(true);
         FornecedorControl fc = new FornecedorControl();
 
+
+        Fornecedor fornecedor = new Fornecedor();
+
+
+
+
         cadastrarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String nome = nomeText.getText();
-                String cnpj = cnpjText.getText();
-                String celular = celularText.getText();
-                String email = emailText.getText();
-
                 Fornecedor fornecedor = new Fornecedor();
-                fornecedor.setNome(nome);
-                fornecedor.setCnpj(cnpj);
-                fornecedor.setCelular(celular);
-                fornecedor.setEmail(email);
+                fornecedor.setNome(nomeText.getText());
+                fornecedor.setCnpj(cnpjText.getText());
+                fornecedor.setCelular(celularText.getText());
+                fornecedor.setEmail(emailText.getText());
 
-                try {
-                    fc.cadastrar(fornecedor); // Chama o método cadastrar com o fornecedor preenchido
-                    JOptionPane.showMessageDialog(frame, "Fornecedor cadastrado com sucesso.");
-                } catch (FornecedorException ex) {
-                    JOptionPane.showMessageDialog(frame, ex.getMessage());
+
+                    try {
+                        fc.cadastrar(fornecedor); // Chama o método cadastrar com o fornecedor preenchido
+                        JOptionPane.showMessageDialog(frame, "Fornecedor cadastrado com sucesso.");
+                    } catch (FornecedorException ex) {
+                        JOptionPane.showMessageDialog(frame, ex.getMessage());
+                    }
                 }
-            }
+
         });
         returnaMenu.addActionListener(new ActionListener() {
             @Override
@@ -136,7 +149,7 @@ public class TelaFornecedor extends JFrame {
 
 
 
-    private void limpardados() {
+   private void limpardados() {
         nomeText.setText("");
         celularText.setText("");
         cnpjText.setText("");

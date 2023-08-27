@@ -3,6 +3,7 @@ package br.com.mercadinho.control;
 import br.com.mercadinho.db.ConectorBd;
 import br.com.mercadinho.exception.FornecedorException;
 import br.com.mercadinho.model.Fornecedor;
+import br.com.mercadinho.view.TelaFornecedor;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +12,7 @@ import java.sql.SQLException;
 
 
 public class FornecedorControl {
-    final Fornecedor f = new Fornecedor();
+     Fornecedor f = new Fornecedor();
 
 
 
@@ -56,10 +57,10 @@ public class FornecedorControl {
                     .prepareStatement("INSERT INTO FORNECEDOR (NOME, CNPJ, CELULAR, EMAIL) VALUES (?, ?, ?, ? )");
 
 
-            ps.setString(1,f.getNome());
-            ps.setString(2, f.getCnpj());
-            ps.setString(3, f.getCelular());
-            ps.setString(4, f.getEmail());
+            ps.setString(1,fornecedor.getNome());
+            ps.setString(2, fornecedor.getCnpj());
+            ps.setString(3, fornecedor.getCelular());
+            ps.setString(4, fornecedor.getEmail());
             ps.execute();
 
         } catch (SQLException e) {
