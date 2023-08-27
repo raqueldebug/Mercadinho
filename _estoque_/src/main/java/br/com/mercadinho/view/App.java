@@ -1,20 +1,20 @@
 package br.com.mercadinho.view;
 
-import br.com.mercadinho.ViewProdutos;
+import br.com.mercadinho.view.ViewProdutos;
 import net.java.dev.designgridlayout.DesignGridLayout;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class TelaMenu {
+public class App {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> createAndShowGUI());
 
     }
 
-    public TelaMenu(){
+    public App(){
         createAndShowGUI();
     }
 
@@ -35,11 +35,11 @@ public class TelaMenu {
         JPanel buttonPanel = new JPanel();
         JButton ButtonFornecedor = new JButton("Cadastrar Fornecedor");
         JButton ButtonProduto = new JButton("Cadastrar Produto");
-        JButton ButtonPesquisarProd = new JButton("Pesquisar Produtos cadastrados");
+
 
         buttonPanel.add(ButtonFornecedor);
         buttonPanel.add(ButtonProduto);
-        buttonPanel.add(ButtonPesquisarProd);
+
 
 
 
@@ -54,7 +54,8 @@ public class TelaMenu {
             public void actionPerformed(ActionEvent e) {
 
                 TelaFornecedor telaF = new TelaFornecedor();
-                telaF.setVisible(true);
+
+                telaF.getOwner();
 
             }
         });
@@ -70,16 +71,7 @@ public class TelaMenu {
                 //ARRUMAR
             }
         });
-        ButtonPesquisarProd.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
 
-                ViewProdutos viewP = new ViewProdutos();
-                setVisible(true);
-
-
-            }
-        });
 
 
 

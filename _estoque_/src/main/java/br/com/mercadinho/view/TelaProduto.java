@@ -1,6 +1,5 @@
 package br.com.mercadinho.view;
 
-import br.com.mercadinho.ViewProdutos;
 import br.com.mercadinho.control.ProdutoControl;
 import br.com.mercadinho.db.ConectorBd;
 import br.com.mercadinho.model.Produto;
@@ -29,7 +28,7 @@ public class TelaProduto extends JFrame {
     private static JTextField qtdminest = new JTextField();
     private static JTextField dtainclusao = new JTextField();
 
-    private static JComboBox<String> fornecedorComboBox;
+    public static JComboBox<String> fornecedorComboBox;
     private static Map<JLabel, JTextField> camposTexto = new HashMap<>(); // Mapa para armazenar rótulos e campos de texto
 
     public static void main(String[] args) {
@@ -50,12 +49,12 @@ public class TelaProduto extends JFrame {
 
         DesignGridLayout layout = new DesignGridLayout(frame.getContentPane());
 
-        fornecedorComboBox = new JComboBox<>();
+         fornecedorComboBox = new JComboBox<>();
+
 
         preencherComboBox();  // Chama o método para preencher o JComboBox com os dados do banco de dados
         layout.row().grid(new JLabel("Fornecedor:")).add(fornecedorComboBox);
         layout.row().grid(new JLabel("Nome:")).add(nomeP);
-        //layout.row().grid(new JLabel("Nome:")).add(new JTextField(20));
         layout.row().grid(new JLabel("Quantidade:")).add(quantd);
         layout.row().grid(new JLabel("Valor:")).add(valor);
         layout.row().grid(new JLabel("Data de validade:")).add(dtaval);
@@ -65,15 +64,16 @@ public class TelaProduto extends JFrame {
         JPanel buttonPanel = new JPanel();
         JButton cadastrarButton = new JButton("Cadastrar");
         JButton cancelarButton = new JButton("Cancelar");
-
+        JButton ButtonPesquisarProd = new JButton("Pesquisar Produtos");
         JButton retornaMenu = new JButton("Retornar ao menu");
-        JButton listaproduto = new JButton("Pesquisar");
+
 
         buttonPanel.add(cadastrarButton);
         buttonPanel.add(cancelarButton);
+        buttonPanel.add(ButtonPesquisarProd);
 
         buttonPanel.add(retornaMenu);
-        buttonPanel.add(listaproduto);
+
 
 
         layout.row().center().add(buttonPanel);
@@ -83,19 +83,42 @@ public class TelaProduto extends JFrame {
         frame.setVisible(true);
 
 
-        listaproduto.addActionListener(new ActionListener() {
+
+
+        ButtonPesquisarProd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //condicçao para aparecer apenas os produtos dos fornecedores selecionados
+                String itemSelecionado = (String) fornecedorComboBox.getSelectedItem();
+                if ("AMBEV".equals(itemSelecionado)) {
+                    //criar um view apenas para este selecionado
+                    ViewProdutos p = new ViewProdutos(true,false);
+                    p.setVisible(true);
 
-                ViewProdutos viewP = new ViewProdutos();
-                viewP.setVisible(true);
-                //POSSO MELHORAR A PESQUISA PARA O TIPO QUE FOI SELECIONADO NO MENUZINHO DE FORNECEDOR
+
+
+
+                    System.out.println("Item selecionado é ambev");
+                }else if("COCA-COLA".equals(itemSelecionado)){
+                 //criar um view apenas para este selecionado
+                    ViewProdutos p = new ViewProdutos(false,true);
+                    p.setVisible(true);
+
+
+                } else {
+                    // Caso contrário, faça outra coisa
+                    // Por exemplo, exibir uma mensagem padrão ou realizar outra ação
+                    System.out.println("Item selecionado não é coca-cola");
+                }
+
+
+
+
+
+
 
             }
         });
-
-
-
 
       /*  TelaMenu menu = new TelaMenu();
         menu.setVisible(true);
@@ -239,8 +262,8 @@ public class TelaProduto extends JFrame {
 
         public static void main(String[] args) {
             SwingUtilities.invokeLater(() -> {
-                ViewProdutos viewProdutos = new ViewProdutos();
-                viewProdutos.setVisible(true);
+
+
             });
         }
 

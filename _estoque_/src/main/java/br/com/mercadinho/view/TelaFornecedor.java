@@ -1,7 +1,6 @@
 package br.com.mercadinho.view;
 
 import br.com.mercadinho.control.FornecedorControl;
-import br.com.mercadinho.exception.FornecedorException;
 import br.com.mercadinho.model.Fornecedor;
 import net.java.dev.designgridlayout.DesignGridLayout;
 
@@ -68,7 +67,7 @@ public class TelaFornecedor extends JFrame {
         returnaMenu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                TelaMenu menu = new TelaMenu();
+                App menu = new App();
                 menu.setVisible(true);
             }
         });
