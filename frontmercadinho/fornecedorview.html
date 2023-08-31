@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cadastro Fornecedor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 400px;
+            margin: 0 auto;
+             padding: 5px;
+            margin-top: 5px;
+        }
+
+        .label-container {
+            text-align: center;
+            background-color: #003366;
+            color: white;
+            padding: 5px;
+            border-radius: 5px 5px 0 0;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+  .colored-label {
+            color: red;
+            font-size: 13px; 
+font-family: Arial Black Italic
+        }
+
+        input[type="text"], input[type="tel"] {
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="label-container">
+            <label for="Cadastro Fornecedor-label">Cadastro Fornecedor</label>
+        </div>
+        <label for="CNPJ">CNPJ:</label>
+	
+        <input type="text" id="cnpj" placeholder="Informe o CNPJ">
+<label for="*campo obrigatório para pesquisa-label" class="colored-label">*campo obrigatorio para pesquisa</label>
+
+
+
+
+        <button id="pesquisar">Pesquisar</button>
+
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" placeholder="Nome do Fornecedor">
+
+        <label for="telefone">Telefone:</label>
+        <input type="tel" id="telefone" placeholder="Telefone">
+
+        <label for="email">E-mail:</label>
+        <input type="text" id="email" placeholder="E-mail">
+
+        <hr>
+
+        <button id="ativar">Ativar</button>
+        <button id="cadastrar">Cadastrar</button>
+        <button id="cancelar">Cancelar</button>
+    </div>
+</body>
+</html>

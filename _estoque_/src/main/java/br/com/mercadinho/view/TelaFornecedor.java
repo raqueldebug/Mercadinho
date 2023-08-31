@@ -1,6 +1,6 @@
 package br.com.mercadinho.view;
 
-import br.com.mercadinho.control.FornecedorControl;
+import br.com.mercadinho.dao.FornecedorDao;
 import br.com.mercadinho.exception.FornecedorException;
 import br.com.mercadinho.model.Fornecedor;
 import net.java.dev.designgridlayout.DesignGridLayout;
@@ -65,7 +65,7 @@ public class TelaFornecedor extends JFrame {
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-        FornecedorControl fc = new FornecedorControl();
+        FornecedorDao fc = new FornecedorDao();
 
 
         Fornecedor fornecedor = new Fornecedor();

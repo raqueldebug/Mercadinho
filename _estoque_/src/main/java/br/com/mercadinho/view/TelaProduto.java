@@ -1,6 +1,6 @@
 package br.com.mercadinho.view;
 
-import br.com.mercadinho.control.ProdutoControl;
+import br.com.mercadinho.dao.ProdutoDao;
 import br.com.mercadinho.db.ConectorBd;
 import br.com.mercadinho.model.Produto;
 import net.java.dev.designgridlayout.DesignGridLayout;
@@ -146,7 +146,7 @@ public class TelaProduto extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                ProdutoControl prodtud = new ProdutoControl();
+                ProdutoDao prodtud = new ProdutoDao();
 
 
                 JOptionPane.showMessageDialog(cadastrarButton, "CADASTRADO!!!");

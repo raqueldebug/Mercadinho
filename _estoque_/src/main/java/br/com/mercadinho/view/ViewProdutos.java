@@ -33,6 +33,8 @@ public class ViewProdutos extends JFrame {
         setVisible(true);
     }
 
+
+    //COLOCAR NA DAO
     private void loadProducts(boolean isAmbevSelected, boolean isCocaSelected) {
         List<String> columnNames = List.of("Nome", "Quantidade", "Valor", "Data de Validade", "Quantidade Mínima", "Data de Inclusão");
         List<String[]> data = new ArrayList<>();

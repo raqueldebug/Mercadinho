@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu Estoque</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 400px;
+           margin: 0 auto;
+             padding: 5px;
+            margin-top: 5px;
+        }
+
+        .label-container {
+            text-align: center;
+            background-color: #5C604D;
+            color: white;
+            padding: 5px;
+            border-radius: 5px 5px 0 0;
+        }
+
+        label {
+            display: block;
+            margin-top: 13px;
+        }
+  .colored-label {
+            color: red;
+            font-size: 13px; 
+font-family: Arial Black Italic
+        }
+
+        input[type="text"], input[type="tel"] {
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #C8CFB4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+        <div class="label-container">
+            <label for="Menu Estoque-label">Menu Estoque</label>
+   <p><br></p>
+ <button id="Cadastrar Fornecedor">Cadastrar Fornecedor</button> <button id="Cadastrar Prouto">Cadastrar Prouto</button>
+<script>
+    const btnCadastrarFornecedor = document.getElementById("btnCadastrarFornecedor");
+    const btnCadastrarProduto = document.getElementById("btnCadastrarProduto");
+
+    btnCadastrarFornecedor.addEventListener("click", function() {
+        window.location.href = "cadastrar-fornecedor.html";
+    });
+
+    btnCadastrarProduto.addEventListener("click", function() {
+        window.location.href = "cadastrar-produto.html";
+    });
+</script>
+
+</body> 
+

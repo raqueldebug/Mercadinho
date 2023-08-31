@@ -1,11 +1,13 @@
 package br.com.mercadinho.view;
 
-import br.com.mercadinho.view.ViewProdutos;
 import net.java.dev.designgridlayout.DesignGridLayout;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import static org.jdesktop.swingx.prompt.BuddySupport.add;
 
 public class App {
 
@@ -60,6 +62,8 @@ public class App {
             }
         });
 
+
+
         ButtonProduto.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -77,8 +81,9 @@ public class App {
 
 
 
-
     }
+
+
 
 
     public static void setVisible(boolean b) {

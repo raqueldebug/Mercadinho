@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cadastro Produto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 400px;
+            margin: 0 auto;
+             padding: 5px;
+            margin-top: 5px;
+        }
+
+        .label-container {
+            text-align: center;
+            background-color: #5C604D;
+            color: white;
+            padding: 5px;
+            border-radius: 5px 5px 0 0;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+  .colored-label {
+            color: red;
+            font-size: 13px; 
+font-family: Arial Black Italic
+        }
+
+        input[type="text"], input[type="tel"] {
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #FFBAD2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+
+
+    <div class="container">
+        <div class="label-container">
+            <label for="Cadastro Produto-label">Cadastro Produto</label>
+        </div>
+
+
+        <label for="NOME">NOME:</label>
+	
+        <input type="text" id="nome" placeholder="Informe o nome do produto">
+<label for="*campo obrigatório para pesquisa-label" class="colored-label">*campo obrigatorio para pesquisa</label>
+
+
+
+
+        <button id="pesquisar">Pesquisar</button>
+
+        <label for="Quantidade">Quantidade:</label>
+        <input type="text" id="nome" placeholder="Digite a quantidade">
+
+        <label for="Valor do produto">Valor do produto:</label>
+        <input type="text" id="Valor do produto" placeholder="Digite o valor">
+
+        <label for="Data de validade">Data de validade:</label>
+        <input type="text" id="Data de validade" placeholder="Data de validade">
+
+       <label for="Quantidade minima de estoque">Quantidade minima de estoque:</label>
+        <input type="text" id="Quantidade minima de estoque" placeholder="Quantidade minima de estoque">
+
+ <label for="Data de inclusao">Data de inclusao:</label>
+        <input type="text" id="Data de inclusao" placeholder="Data de inclusao">
+
+        <hr>
+
+        <button id="ativar">Ativar</button>
+        <button id="cadastrar">Cadastrar</button>
+        <button id="cancelar">Cancelar</button>
+    </div>
+</body>
+</html>
