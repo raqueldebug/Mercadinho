@@ -3,9 +3,11 @@ package br.com.mercadinho.view;
 import br.com.mercadinho.dao.ProdutoDao;
 import br.com.mercadinho.db.ConectorBd;
 import br.com.mercadinho.exception.FornecedorException;
-import br.com.mercadinho.model.Fornecedor;
 import br.com.mercadinho.model.Produto;
 import net.java.dev.designgridlayout.DesignGridLayout;
+import org.jdatepicker.JDatePicker;
+import org.jdesktop.swingx.JXDatePicker;
+import org.jdatepicker.impl.DateComponentFormatter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,7 +28,9 @@ public class TelaProduto extends JFrame {
     private static JTextField txtnomeP = new JTextField();
     private static JTextField txtquantd = new JTextField();
     private static JTextField txtvalor = new JTextField();
-    private static JTextField txtdtaval = new JTextField();
+   // private static JTextField txtdtaval = new JTextField();
+
+    static JXDatePicker txtdtaval = new JXDatePicker();
     private static JTextField txtqtdminest = new JTextField();
     private static JTextField txtdtainclusao = new JTextField();
 
@@ -59,7 +63,7 @@ public class TelaProduto extends JFrame {
         layout.row().grid(new JLabel("Nome:")).add(txtnomeP);
         layout.row().grid(new JLabel("Quantidade:")).add(txtquantd);
         layout.row().grid(new JLabel("Valor:")).add(txtvalor);
-        layout.row().grid(new JLabel("Data de validade:")).add(txtdtaval);
+        layout.row().grid(new JLabel("Data de validade:")).add((JComponent) txtdtaval.getComponent(0));
         layout.row().grid(new JLabel("Quantidade mínima de estoque:")).add(txtqtdminest);
         layout.row().grid(new JLabel("Data de inclusão:")).add(txtdtainclusao);
 
@@ -84,7 +88,7 @@ public class TelaProduto extends JFrame {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
-
+        txtdtaval.setEditable(true);
 
 
         ButtonPesquisarProd.addActionListener(new ActionListener() {
@@ -156,7 +160,7 @@ public class TelaProduto extends JFrame {
                 produto.setNomeP(txtnomeP.getText());
                 produto.setQuantd(txtquantd.getText());
                 produto.setValor(txtvalor.getText());
-                produto.setDtaval(txtdtaval.getText());
+                produto.setDtaval(String.valueOf(txtdtaval.getDate()));
                 produto.setQtdminest(txtqtdminest.getText());
                 produto.setDtainclusao(txtdtainclusao.getText());
 
@@ -293,7 +297,7 @@ public class TelaProduto extends JFrame {
         txtnomeP.setText("");
         txtquantd.setText("");
         txtvalor.setText("");
-        txtdtaval.setText("");
+        txtdtaval.setEditable(false);
         txtqtdminest.setText("");
         txtdtainclusao.setText("");
 
