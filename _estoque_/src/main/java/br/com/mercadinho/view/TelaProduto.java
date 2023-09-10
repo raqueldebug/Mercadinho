@@ -2,6 +2,8 @@ package br.com.mercadinho.view;
 
 import br.com.mercadinho.dao.ProdutoDao;
 import br.com.mercadinho.db.ConectorBd;
+import br.com.mercadinho.exception.FornecedorException;
+import br.com.mercadinho.model.Fornecedor;
 import br.com.mercadinho.model.Produto;
 import net.java.dev.designgridlayout.DesignGridLayout;
 
@@ -21,12 +23,12 @@ public class TelaProduto extends JFrame {
 
     Produto produto = new Produto();
 
-    private static JTextField nomeP = new JTextField();
-    private static JTextField quantd = new JTextField();
-    private static JTextField valor = new JTextField();
-    private static JTextField dtaval = new JTextField();
-    private static JTextField qtdminest = new JTextField();
-    private static JTextField dtainclusao = new JTextField();
+    private static JTextField txtnomeP = new JTextField();
+    private static JTextField txtquantd = new JTextField();
+    private static JTextField txtvalor = new JTextField();
+    private static JTextField txtdtaval = new JTextField();
+    private static JTextField txtqtdminest = new JTextField();
+    private static JTextField txtdtainclusao = new JTextField();
 
     public static JComboBox<String> fornecedorComboBox;
     private static Map<JLabel, JTextField> camposTexto = new HashMap<>(); // Mapa para armazenar rótulos e campos de texto
@@ -49,17 +51,17 @@ public class TelaProduto extends JFrame {
 
         DesignGridLayout layout = new DesignGridLayout(frame.getContentPane());
 
-         fornecedorComboBox = new JComboBox<>();
+        fornecedorComboBox = new JComboBox<>();
 
 
         preencherComboBox();  // Chama o método para preencher o JComboBox com os dados do banco de dados
         layout.row().grid(new JLabel("Fornecedor:")).add(fornecedorComboBox);
-        layout.row().grid(new JLabel("Nome:")).add(nomeP);
-        layout.row().grid(new JLabel("Quantidade:")).add(quantd);
-        layout.row().grid(new JLabel("Valor:")).add(valor);
-        layout.row().grid(new JLabel("Data de validade:")).add(dtaval);
-        layout.row().grid(new JLabel("Quantidade mínima de estoque:")).add(qtdminest);
-        layout.row().grid(new JLabel("Data de inclusão:")).add(dtainclusao);
+        layout.row().grid(new JLabel("Nome:")).add(txtnomeP);
+        layout.row().grid(new JLabel("Quantidade:")).add(txtquantd);
+        layout.row().grid(new JLabel("Valor:")).add(txtvalor);
+        layout.row().grid(new JLabel("Data de validade:")).add(txtdtaval);
+        layout.row().grid(new JLabel("Quantidade mínima de estoque:")).add(txtqtdminest);
+        layout.row().grid(new JLabel("Data de inclusão:")).add(txtdtainclusao);
 
         JPanel buttonPanel = new JPanel();
         JButton cadastrarButton = new JButton("Cadastrar");
@@ -100,7 +102,7 @@ public class TelaProduto extends JFrame {
 
                     System.out.println("Item selecionado é ambev");
                 }else if("COCA-COLA".equals(itemSelecionado)){
-                 //criar um view apenas para este selecionado
+                    //criar um view apenas para este selecionado
                     ViewProdutos p = new ViewProdutos(false,true);
                     p.setVisible(true);
 
@@ -149,7 +151,21 @@ public class TelaProduto extends JFrame {
                 ProdutoDao prodtud = new ProdutoDao();
 
 
-                JOptionPane.showMessageDialog(cadastrarButton, "CADASTRADO!!!");
+
+                Produto produto = new Produto();
+                produto.setNomeP(txtnomeP.getText());
+                produto.setQuantd(txtquantd.getText());
+                produto.setValor(txtvalor.getText());
+                produto.setDtaval(txtdtaval.getText());
+                produto.setQtdminest(txtqtdminest.getText());
+                produto.setDtainclusao(txtdtainclusao.getText());
+
+                try {
+                    ProdutoDao.cadastrarProduto(produto);
+                } catch (FornecedorException ex) {
+                    throw new RuntimeException(ex);
+                }
+
 
             }
         });
@@ -274,12 +290,12 @@ public class TelaProduto extends JFrame {
 
     private static void limparDados() {
 
-        nomeP.setText("");
-        quantd.setText("");
-        valor.setText("");
-        dtaval.setText("");
-        qtdminest.setText("");
-        dtainclusao.setText("");
+        txtnomeP.setText("");
+        txtquantd.setText("");
+        txtvalor.setText("");
+        txtdtaval.setText("");
+        txtqtdminest.setText("");
+        txtdtainclusao.setText("");
 
 
 

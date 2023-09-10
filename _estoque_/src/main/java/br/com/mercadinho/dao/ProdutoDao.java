@@ -10,15 +10,19 @@ import java.sql.SQLException;
 
 public class ProdutoDao {
 
-    public static void main(String[] args) {}
+    public static void main(String[] args) {
 
-    public void cadastrarProduto(final Produto produto) throws FornecedorException {
+    }
+
+
+
+    public static void cadastrarProduto(Produto produto) throws FornecedorException {
 
 
         try {
             Connection con = ConectorBd.getConnection();
 
-            PreparedStatement ps = con.prepareStatement("INSERT INTO PRODUTO (NOME, QUANTIDADE, ID_FORNECEDOR, VALOR, DATA_VALIDADE, QTA_MIN_ESTOQUE, DATA_INCLUSAO) VALUES (? , ?, ?, ?, ?, ? )");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO PRODUTO (NOME, QUANTIDADE, VALOR, DATA_VALIDADE, QTA_MIN_ESTOQUE, DATA_INCLUSAO) VALUES (? , ?, ?, ?, ?, ? )");
             ps.setString(1, produto.getNomeP());
             ps.setString(2, produto.getQuantd());
             ps.setString(3, produto.getValor());
@@ -31,6 +35,6 @@ public class ProdutoDao {
             // TODO Auto-generated catch block
             e.printStackTrace();
             throw new FornecedorException("Erro ao cadastrar produto, tente mais tarde");
-        }
+        }System.out.printf("PRODUTO CADASTRADO");
     }
 }

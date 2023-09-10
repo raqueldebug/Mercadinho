@@ -3,31 +3,21 @@ package br.com.mercadinho.view;
 import net.java.dev.designgridlayout.DesignGridLayout;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static org.jdesktop.swingx.prompt.BuddySupport.add;
-
-public class App {
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> createAndShowGUI());
-
-    }
-
-    public App(){
+public class RelatoriosView {
+    public RelatoriosView() {
         createAndShowGUI();
     }
 
     private static void createAndShowGUI() {
+         JTextField digiteOpcao = new JTextField();
 
-        JFrame frame = new JFrame("Menu de escolhas");
+        JFrame frame = new JFrame("Emissão de relatórios");
         frame.setSize(500, 400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
-
-
 
 
         DesignGridLayout layout = new DesignGridLayout(frame.getContentPane());
@@ -35,14 +25,14 @@ public class App {
 
 
         JPanel buttonPanel = new JPanel();
-        JButton ButtonFornecedor = new JButton("Cadastrar Fornecedor");
+        JButton ButtonFornecedor = (JButton) new JButton("Cadastrar Fornecedor").add(digiteOpcao);
         JButton ButtonProduto = new JButton("Cadastrar Produto");
+//posso fazer a caixa de texto e a partir do digitado ele entra n opção desejada
 
+        layout.row().grid(new JLabel("Nome:"));
 
         buttonPanel.add(ButtonFornecedor);
         buttonPanel.add(ButtonProduto);
-
-
 
 
         layout.row().center().add(buttonPanel);
@@ -63,8 +53,7 @@ public class App {
         });
 
 
-
-        ButtonProduto.addActionListener(new ActionListener() {
+      /*  ButtonProduto.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -74,20 +63,13 @@ public class App {
 
                 //ARRUMAR
             }
-        });
-
-
-
-
+        });*/
 
 
     }
-
-
 
 
     public static void setVisible(boolean b) {
     }
-
 
 }
